@@ -1,22 +1,27 @@
-// src/app/peliculas/page.tsx
+import { Film } from '../interfaces/films';
+import GridMovies from '../components/MovieGrid';
 
-import React from "react";
-import { Movie } from "../interfaces/films"; // Opcional: si tienes interface separada
-import { MovieGrid } from "../components/MovieGrid"; // Ajusta ruta según dónde guardes tus componentes
+// Obtener lista de películas con caché
+async function getPeliculas(): Promise<Film[]> {
+  const res = await fetch('https://ghibliapi.vercel.app/films', {
+    cache: 'force-cache',
+  });
 
-async function getMovies(): Promise<Movie[]> {
-  const res = await fetch('https://ghibliapi.vercel.app/films');
   if (!res.ok) throw new Error('Error al obtener películas');
   return res.json();
 }
 
 export default async function PeliculasPage() {
-  const movies = await getMovies();
+  const peliculas = await getPeliculas();
 
   return (
-    <main className="p-6">
-      <h1 className="text-4xl font-bold mb-6 text-center">Películas de Studio Ghibli</h1>
-      <MovieGrid movies={movies} />
+    <main className="bg-gradient-to-b from-gray-800 to-gray-900 min-h-screen p-6">
+      <div className="container mx-auto px-6">
+        <h1 className="text-4xl font-bold text-white mb-8 text-center">
+          🎥 Películas de Studio Ghibli
+        </h1>
+        <GridMovies peliculas={peliculas} />
+      </div>
     </main>
   );
 }
