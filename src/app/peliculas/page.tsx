@@ -1,7 +1,7 @@
 import { Film } from '../interfaces/films';
 import GridMovies from '../components/MovieGrid';
+import { crearSlug } from '../utils/slug';
 
-// Obtener lista de películas con caché
 async function getPeliculas(): Promise<Film[]> {
   const res = await fetch('https://ghibliapi.vercel.app/films', {
     cache: 'force-cache',
@@ -20,7 +20,7 @@ export default async function PeliculasPage() {
         <h1 className="text-4xl font-bold text-white mb-8 text-center">
           🎥 Películas de Studio Ghibli
         </h1>
-        <GridMovies peliculas={peliculas} />
+        <GridMovies peliculas={peliculas} crearSlug={crearSlug} />
       </div>
     </main>
   );

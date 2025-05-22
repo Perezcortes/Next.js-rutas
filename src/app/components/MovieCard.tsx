@@ -1,9 +1,14 @@
 import { Film } from '../interfaces/films';
 
-export default function CardMovie({ pelicula }: { pelicula: Film }) {
+type Props = {
+  pelicula: Film;
+  slug: string;
+};
+
+export default function CardMovie({ pelicula, slug }: Props) {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden flex flex-col w-full max-w-md hover:scale-105 transition-transform duration-300">
-      <a href={`/peliculas/${pelicula.id}`} className="relative">
+      <a href={`/peliculas/${slug}`} className="relative">
         <div className="flex justify-center items-center bg-gray-100 aspect-video">
           <img 
             src={pelicula.image} 
@@ -25,7 +30,7 @@ export default function CardMovie({ pelicula }: { pelicula: Film }) {
             🎬 {pelicula.release_date}
           </span>
           <a 
-            href={`/peliculas/${pelicula.id}`} 
+            href={`/peliculas/${slug}`} 
             className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-800 transition"
           >
             Ver más →
