@@ -1,5 +1,3 @@
-'use client';
-
 import { Film } from '../../interfaces/films';
 import { crearSlug } from '../../utils/slug';
 
