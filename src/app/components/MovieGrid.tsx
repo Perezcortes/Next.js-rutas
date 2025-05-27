@@ -1,3 +1,5 @@
+'use client';
+
 import { Film } from '../interfaces/films';
 import CardMovie from './MovieCard';
 

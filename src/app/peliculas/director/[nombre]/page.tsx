@@ -1,3 +1,5 @@
+'use client';
+
 import { Film } from '@/app/interfaces/films';
 
 // Generar rutas estáticas para cada director
