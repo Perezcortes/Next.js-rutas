@@ -1,6 +1,11 @@
-import type { Metadata } from "next";
+'use client';
 
+import type { Metadata } from "next";
+import { Provider } from "react-redux"; // Se agrega el proveedor de Redux
+import { store } from "../redux/store"; 
 import "./globals.css";
+
+import FavoritosFloating from './components/FavoritosFloating';
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,10 +17,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body>
-        {children}
+        {/* Se envuelve la aplicación en el proveedor de Redux para gestionar el estado global */}
+        <Provider store={store}>
+          {children}
+
+          {/* Componente que usa useSelector */}
+          <FavoritosFloating />
+        </Provider>
       </body>
     </html>
   );
