@@ -1,3 +1,5 @@
+//src/peliculas/page.tsx
+'use client';
 import { Film } from '../interfaces/films';
 import GridMovies from '../components/MovieGrid';
 import { crearSlug } from '../utils/slug';
