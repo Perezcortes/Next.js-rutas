@@ -1,8 +1,5 @@
-//src/peliculas/page.tsx
-'use client';
 import { Film } from '../interfaces/films';
 import GridMovies from '../components/MovieGrid';
-import { crearSlug } from '../utils/slug';
 
 async function getPeliculas(): Promise<Film[]> {
   const res = await fetch('https://ghibliapi.vercel.app/films', {
@@ -22,7 +19,8 @@ export default async function PeliculasPage() {
         <h1 className="text-4xl font-bold text-white mb-8 text-center">
           🎥 Películas de Studio Ghibli
         </h1>
-        <GridMovies peliculas={peliculas} crearSlug={crearSlug} />
+        {/* Solo pasamos peliculas, sin crearSlug */}
+        <GridMovies peliculas={peliculas} />
       </div>
     </main>
   );
