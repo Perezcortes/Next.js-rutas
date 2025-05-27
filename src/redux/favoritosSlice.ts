@@ -1,4 +1,5 @@
 // src/redux/favoritosSlice.ts
+'use client';
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { Film } from '../app/interfaces/films';
